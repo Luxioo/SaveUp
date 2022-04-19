@@ -22,12 +22,23 @@ namespace SaveUp
 
 
 
-        private void bt_sp__Clicked(object sender, EventArgs e)
+        private void bt_sp_Clicked(object sender, EventArgs e)
         {
             if (en_na.Text != "" && en_be.Text != "")
             {
-                
+                itemlist.Add(new item(en_na.Text, Convert.ToDouble(en_be.Text)));
             }
+        }
+
+
+        /// <summary>
+        /// Event Handler für den Button zu den Einträgen der die Seite wechselt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_ei_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ListePage());
         }
     }
 }
