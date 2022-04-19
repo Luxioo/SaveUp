@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,33 @@ namespace SaveUp
                 x += $" {item.name}  {item.betrag}  {item.uhrzeit} \n";
             }
             ed_te.Text = x;
+        }
+
+        private void bt_sp_Clicked(object sender, EventArgs e)
+        {
+            string pfad = @"c:\temp\Storage.txt";
+            try
+            {
+                if (File.Exists(pfad) == false)
+                {
+                    StreamWriter writer1;
+                    writer1 = File.CreateText(pfad);
+                }
+
+
+                StreamReader reader = new StreamReader(pfad);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void bt_ei_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
+
         }
     }
 }
