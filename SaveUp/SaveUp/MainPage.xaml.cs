@@ -38,7 +38,7 @@ namespace SaveUp
         /// <param name="e"></param>
         private void bt_ei_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ListePage());
+            Navigation.PushAsync(new ListePage(itemlist));
         }
     }
 }
