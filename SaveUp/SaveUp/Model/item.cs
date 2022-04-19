@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SaveUp.Model
+namespace SaveUp
 {
     public class item
     {
