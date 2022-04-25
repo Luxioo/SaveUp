@@ -13,18 +13,18 @@ namespace SaveUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListePage : ContentPage
     {
-        public List<item> Itemliste = new List<item>();
-        public ListePage(List<item> dieitemlistepara)
+        public Datacontainer container = new Datacontainer();
+        public ListePage(Datacontainer dermitgegebeneDatacontainer)
         {
             string x = "";
             InitializeComponent();
-            foreach (var item in dieitemlistepara)
+            foreach (var item in dermitgegebeneDatacontainer.itemliste)
             {
                 x += $" {item.name}  {item.betrag}  {item.uhrzeit} \n";
             }
             ed_te.Text = x;
 
-            Itemliste = dieitemlistepara;
+            container = dermitgegebeneDatacontainer;
         }
 
         private void bt_sp_Clicked(object sender, EventArgs e)
