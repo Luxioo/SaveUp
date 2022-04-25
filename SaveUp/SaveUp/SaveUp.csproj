@@ -23,8 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ListePage.xaml">
+    <EmbeddedResource Update="Views\ListePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
   </ItemGroup>
 </Project>
