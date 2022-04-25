@@ -5,8 +5,10 @@
     <ContentPage.Content>
         <StackLayout>
             <Editor IsReadOnly="True" x:Name="ed_te" />
+            <Button Text="Liste Leeren" x:Name="bt_le" Clicked="bt_le_Clicked" />
             <Button Text="Speichern lokal" x:Name="bt_sp" Clicked="bt_sp_Clicked" />
             <Button Text="Zurück zu der Eintragsseite" x:Name="bt_ei" Clicked="bt_ei_Clicked" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
