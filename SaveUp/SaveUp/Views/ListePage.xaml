@@ -1,14 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SaveUp.ViewModel"
              x:Class="SaveUp.ListePage">
+
+    <ContentPage.BindingContext>
+        <local:ListePageViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <Editor IsReadOnly="True" x:Name="ed_te" />
-            <Button Text="Liste Leeren" x:Name="bt_le" Clicked="bt_le_Clicked" />
-            <Button Text="Speichern lokal" x:Name="bt_sp" Clicked="bt_sp_Clicked" />
-            <Button Text="Zurück zu der Eintragsseite" x:Name="bt_ei" Clicked="bt_ei_Clicked" />
-            
+            <Button Text="Liste Leeren" x:Name="bt_le" Command="Commandlisteleeren" />
+            <Button Text="Speichern lokal" x:Name="bt_sp" Command="Commandspeichern" />
+            <Button Text="Zurück zu der Eintragsseite" x:Name="bt_ei" Command="CommandzurückHauptseite" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

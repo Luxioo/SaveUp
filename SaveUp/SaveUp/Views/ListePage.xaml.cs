@@ -27,26 +27,6 @@ namespace SaveUp
             container = dermitgegebeneDatacontainer;
         }
 
-        private void bt_sp_Clicked(object sender, EventArgs e)
-        {
-            string pfad = @"c:\temp\Storage.txt";
-            try
-            {
-                if (File.Exists(pfad) == false)
-                {
-                    StreamWriter writer1;
-                    writer1 = File.CreateText(pfad);
-                }
-
-
-                StreamReader reader = new StreamReader(pfad);
-            }
-            catch (Exception)
-            {
-                SimpleAlert("Fehler", "Etwas ist schiefgelaufen!", "OK");
-            }
-        }
-
         /// <summary>
         /// Makes an Simple Alert, i had to do that because i wanted to have Displays and they need an async Task
         /// </summary>
@@ -67,9 +47,7 @@ namespace SaveUp
 
         private void bt_le_Clicked(object sender, EventArgs e)
         {
-            /*
-            Itemliste.Clear();
-            */
+
         }
     }
 }
