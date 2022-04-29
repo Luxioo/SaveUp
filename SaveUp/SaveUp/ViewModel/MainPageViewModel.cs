@@ -13,7 +13,6 @@ namespace SaveUp.ViewModel
         /// <summary>
         /// Container mit den Daten
         /// </summary>
-        public Datacontainer Container = new Datacontainer();
         void OnPropertyChanged([CallerMemberName] string name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -24,8 +23,28 @@ namespace SaveUp.ViewModel
             // Commands
             CommandEintragspeichern = new Command(Command1);
             CommandNächsteseite = new Command(Command2);
+            Commandlisteleeren = new Command(Command3);
+            Commandspeichern = new Command(Command4);
+            CommandzurückHauptseite = new Command(Command5);
+
+
+            ItemListe = new List<item>();
 
         }
+
+
+        private List<item> itemliste;
+
+        public List<item> ItemListe
+        {
+            get { return itemliste; }
+            set 
+            { 
+                itemliste = value; 
+                OnPropertyChanged();
+            }
+        }
+
 
         private string name;
 
@@ -62,17 +81,81 @@ namespace SaveUp.ViewModel
         {
             if (Name != "" && Convert.ToDouble(Betrag) > 0)
             {
-                Container.itemliste.Add(new item(Name, Convert.ToDouble(Betrag)));
+                ItemListe.Add(new item(Name, Convert.ToDouble(Betrag)));
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         async void Command2()
         {
-            Application.Current.MainPage = new NavigationPage(new ListePage(Container));
+            Application.Current.MainPage = new NavigationPage(new ListePage());
+        }
+
+        // Page 2
+
+        /// <summary>
+        /// 
+        /// </summary>
+
+        async void Command3()
+        {
+            ItemListe.Clear();
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        async void Command4()
+        {
+            
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        async void Command5()
+        {
+            Application.Current.MainPage = new NavigationPage(new MainPage());
+
         }
 
         public Command CommandEintragspeichern { get; }
         public Command CommandNächsteseite { get; }
 
+
+        /// <summary>
+        /// Command to clear the list in the container
+        /// </summary>
+
+        public Command Commandlisteleeren { get; }
+
+        /// <summary>
+        /// Command to save the data it could maybe be cancelled
+        /// </summary>
+        public Command Commandspeichern { get; }
+
+        /// <summary>
+        /// Command to get back to the MainPage
+        /// </summary>
+        public Command CommandzurückHauptseite { get; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
     }
+
 }

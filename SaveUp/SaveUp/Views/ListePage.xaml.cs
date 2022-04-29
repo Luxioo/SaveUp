@@ -13,18 +13,9 @@ namespace SaveUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListePage : ContentPage
     {
-        public Datacontainer container = new Datacontainer();
-        public ListePage(Datacontainer dermitgegebeneDatacontainer)
+        public ListePage()
         {
-            string x = "";
-            InitializeComponent();
-            foreach (var item in dermitgegebeneDatacontainer.itemliste)
-            {
-                x += $" {item.name}  {item.betrag}  {item.uhrzeit} \n";
-            }
-            ed_te.Text = x;
 
-            container = dermitgegebeneDatacontainer;
         }
 
         /// <summary>
@@ -34,7 +25,7 @@ namespace SaveUp
         /// <param name="Text"></param>
         /// <param name="Buttontext"></param>
         /// <returns></returns>
-        private async Task SimpleAlert(string Titel, string Text, string Buttontext)
+        public async Task SimpleAlert(string Titel, string Text, string Buttontext)
         {
             await DisplayAlert(Titel, Text, Buttontext);
         }

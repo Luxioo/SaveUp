@@ -7,6 +7,9 @@
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
     </ContentPage.BindingContext>
+    
+    
+    
 
     <StackLayout>
         <Entry Placeholder="Name des Artikels" x:Name="en_na" Text="{Binding Name}"/>

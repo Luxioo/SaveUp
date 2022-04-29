@@ -5,14 +5,19 @@
              x:Class="SaveUp.ListePage">
 
     <ContentPage.BindingContext>
-        <local:ListePageViewModel/>
+        <local:MainPageViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <Editor IsReadOnly="True" x:Name="ed_te" />
-            <Button Text="Liste Leeren" x:Name="bt_le" Command="Commandlisteleeren" />
-            <Button Text="Speichern lokal" x:Name="bt_sp" Command="Commandspeichern" />
-            <Button Text="Zurück zu der Eintragsseite" x:Name="bt_ei" Command="CommandzurückHauptseite" />
+            <ListView x:Name="ItemListeListView" ItemsSource="{Binding ItemListe}"/>
+
+
+
+            <Button Text="Liste Leeren" x:Name="bt_le" Command="{Binding Commandlisteleeren}" />
+            <Button Text="Speichern lokal" x:Name="bt_sp" Command="{Binding Commandspeichern}" />
+            <Button Text="Zurück zu der Eintragsseite" x:Name="bt_ei" Command="{Binding CommandzurückHauptseite}" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
