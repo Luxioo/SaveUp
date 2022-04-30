@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -28,11 +29,11 @@ namespace SaveUp.ViewModel
             CommandzurückHauptseite = new Command(Command5);
 
 
-            ItemListe = new List<item>();
-
         }
 
+        public ObservableCollection<item> ItemListe { get; set; } = new ObservableCollection<item>();
 
+        /*
         private List<item> itemliste;
 
         public List<item> ItemListe
@@ -44,6 +45,7 @@ namespace SaveUp.ViewModel
                 OnPropertyChanged();
             }
         }
+        */
 
 
         private string name;
@@ -91,9 +93,13 @@ namespace SaveUp.ViewModel
         /// </summary>
         async void Command1()
         {
-            if (Name != "" && Convert.ToDouble(Betrag) > 0)
+            if ( /*Name != "" && Convert.ToDouble(Betrag) > 0 */ true)
             {
                 ItemListe.Add(new item(Name, Convert.ToDouble(Betrag)));
+            }
+            else
+            {
+
             }
         }
 
@@ -102,11 +108,7 @@ namespace SaveUp.ViewModel
         /// </summary>
         async void Command2()
         {
-            listeasstring = $"Ihre Einträge \n";
-            foreach (item item in ItemListe)
-            {
-                listeasstring += $"{item.name}\t{item.betrag}\t{item.uhrzeit}";
-            }
+
             Application.Current.MainPage = new NavigationPage(new ListePage());
         }
 

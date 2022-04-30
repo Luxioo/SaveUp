@@ -40,5 +40,10 @@ namespace SaveUp
         {
 
         }
+
+        private void ItemListelistView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
     }
 }
