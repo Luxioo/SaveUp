@@ -72,6 +72,18 @@ namespace SaveUp.ViewModel
             }
         }
 
+        private string listeasstring;
+
+        public string ListeasString
+        {
+            get { return listeasstring; }
+            set
+            {
+                ListeasString = value;
+                OnPropertyChanged();
+            }
+        }
+
         // Commands
 
         /// <summary>
@@ -90,6 +102,11 @@ namespace SaveUp.ViewModel
         /// </summary>
         async void Command2()
         {
+            listeasstring = $"Ihre Einträge \n";
+            foreach (item item in ItemListe)
+            {
+                listeasstring += $"{item.name}\t{item.betrag}\t{item.uhrzeit}";
+            }
             Application.Current.MainPage = new NavigationPage(new ListePage());
         }
 

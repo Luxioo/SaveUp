@@ -15,7 +15,7 @@ namespace SaveUp
     {
         public ListePage()
         {
-
+            InitializeComponent();
         }
 
         /// <summary>

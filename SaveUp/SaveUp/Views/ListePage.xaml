@@ -9,9 +9,8 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Editor IsReadOnly="True" x:Name="ed_te" />
-            <ListView x:Name="ItemListeListView" ItemsSource="{Binding ItemListe}"/>
-
+            <Editor IsReadOnly="True" x:Name="ed_te" Text="{Binding ListeasString}" />
+            
 
 
             <Button Text="Liste Leeren" x:Name="bt_le" Command="{Binding Commandlisteleeren}" />
