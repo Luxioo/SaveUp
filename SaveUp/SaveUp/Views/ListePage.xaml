@@ -12,7 +12,14 @@
             <Editor IsReadOnly="True" x:Name="ed_te" Text="{Binding ListeasString}" />
             <ListView x:Name="ItemListelistView"
                       ItemTapped="ItemListelistView_ItemTapped"
-                      ItemsSource="{Binding ItemListe}" />
+                      ItemsSource="{Binding ItemListe}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding name}" Detail="{Binding betrag}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
 
             <Button Text="Liste Leeren" x:Name="bt_le" Command="{Binding Commandlisteleeren}" />
             <Button Text="Speichern lokal" x:Name="bt_sp" Command="{Binding Commandspeichern}" />

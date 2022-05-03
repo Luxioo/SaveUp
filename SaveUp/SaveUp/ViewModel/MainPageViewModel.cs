@@ -28,7 +28,7 @@ namespace SaveUp.ViewModel
             Commandspeichern = new Command(Command4);
             CommandzurückHauptseite = new Command(Command5);
 
-
+            ItemListe.Add(new item("TestInstance", 24));
         }
 
         public ObservableCollection<item> ItemListe { get; set; } = new ObservableCollection<item>();
@@ -172,7 +172,7 @@ namespace SaveUp.ViewModel
 
 
 
-        
+
 
 
     }
