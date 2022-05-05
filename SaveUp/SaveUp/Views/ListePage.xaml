@@ -3,16 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SaveUp.ViewModel"
              x:Class="SaveUp.ListePage">
-
-    <ContentPage.BindingContext>
-        <local:MainPageViewModel/>
-    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout>
             <Editor IsReadOnly="True" x:Name="ed_te" Text="{Binding ListeasString}" />
             <ListView x:Name="ItemListelistView"
                       ItemTapped="ItemListelistView_ItemTapped"
-                      ItemsSource="{Binding ItemListe}">
+                      ItemsSource="{Binding ItemListe}"
+                      >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding name}" Detail="{Binding betrag}"/>

@@ -1,6 +1,7 @@
 ﻿using SaveUp.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,13 @@ namespace SaveUp
         public MainPage()
         {
             InitializeComponent();
+            this.BindingContext = new MainPageViewModel();
+        }
+
+        public MainPage(ObservableCollection<item> temp)
+        {
+            InitializeComponent();
+            this.BindingContext = new MainPageViewModel(temp);
         }
 
     }

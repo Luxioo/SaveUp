@@ -14,11 +14,16 @@ namespace SaveUp.ViewModel
         /// <summary>
         /// Container mit den Daten
         /// </summary>
+        /// 
+        public ObservableCollection<item> ItemListe { get; set; }
+
         void OnPropertyChanged([CallerMemberName] string name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
+        /// <summary>
+        /// Ctor für das erste Mal
+        /// </summary>
         public MainPageViewModel()
         {
             // Commands
@@ -27,11 +32,22 @@ namespace SaveUp.ViewModel
             Commandlisteleeren = new Command(Command3);
             Commandspeichern = new Command(Command4);
             CommandzurückHauptseite = new Command(Command5);
-
-            ItemListe.Add(new item("TestInstance", 24));
+            ItemListe = new ObservableCollection<item>();
+        }
+        /// <summary>
+        /// Ctor falls man wieder auf die Seite verweisst
+        /// </summary>
+        /// <param name="temp"></param>
+        public MainPageViewModel(ObservableCollection<item> temp)
+        {
+            CommandEintragspeichern = new Command(Command1);
+            CommandNächsteseite = new Command(Command2);
+            Commandlisteleeren = new Command(Command3);
+            Commandspeichern = new Command(Command4);
+            CommandzurückHauptseite = new Command(Command5);
+            ItemListe = temp;
         }
 
-        public ObservableCollection<item> ItemListe { get; set; } = new ObservableCollection<item>();
 
         /*
         private List<item> itemliste;
@@ -93,7 +109,7 @@ namespace SaveUp.ViewModel
         /// </summary>
         async void Command1()
         {
-            if ( /*Name != "" && Convert.ToDouble(Betrag) > 0 */ true)
+            if (Name != "" && Convert.ToDouble(Betrag) > 0)
             {
                 ItemListe.Add(new item(Name, Convert.ToDouble(Betrag)));
             }
@@ -109,7 +125,7 @@ namespace SaveUp.ViewModel
         async void Command2()
         {
 
-            Application.Current.MainPage = new NavigationPage(new ListePage());
+            Application.Current.MainPage = new NavigationPage(new ListePage(ItemListe));
         }
 
         // Page 2
@@ -122,7 +138,7 @@ namespace SaveUp.ViewModel
         {
             ItemListe.Clear();
         }
-
+        
         /// <summary>
         ///  
         /// </summary>
@@ -135,7 +151,7 @@ namespace SaveUp.ViewModel
         /// </summary>
         async void Command5()
         {
-            Application.Current.MainPage = new NavigationPage(new MainPage());
+            Application.Current.MainPage = new NavigationPage(new MainPage(ItemListe));
 
         }
 

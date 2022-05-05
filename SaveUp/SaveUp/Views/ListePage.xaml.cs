@@ -4,18 +4,22 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using SaveUp.ViewModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SaveUp
 {
+    
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListePage : ContentPage
     {
-        public ListePage()
+        public ListePage(ObservableCollection<item> temp)
         {
             InitializeComponent();
+            this.BindingContext = new ListePageViewModel(temp);
         }
 
         /// <summary>
@@ -30,11 +34,7 @@ namespace SaveUp
             await DisplayAlert(Titel, Text, Buttontext);
         }
 
-        private void bt_ei_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new MainPage());
 
-        }
 
         private void bt_le_Clicked(object sender, EventArgs e)
         {
