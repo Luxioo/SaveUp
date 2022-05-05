@@ -5,14 +5,15 @@
     <Application.Resources>
         <ResourceDictionary>
             <Style x:Key="buttonStyle" TargetType="Button">
-                <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                <Setter Property="BorderColor" Value="Lime" />
+                <Setter Property="BorderColor" Value="DarkRed" />
                 <Setter Property="BorderRadius" Value="5" />
                 <Setter Property="BorderWidth" Value="5" />
                 <Setter Property="WidthRequest" Value="200" />
-                <Setter Property="TextColor" Value="Teal" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Orange"/>
             </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

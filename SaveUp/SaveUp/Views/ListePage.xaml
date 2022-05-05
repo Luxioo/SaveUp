@@ -8,20 +8,35 @@
         <StackLayout>
             <Editor IsReadOnly="True" x:Name="ed_te" Text="{Binding ListeasString}" />
             <ListView x:Name="ItemListelistView"
-                      ItemTapped="ItemListelistView_ItemTapped"
                       ItemsSource="{Binding ItemListe}"
                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding name}" Detail="{Binding betrag}"/>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding name}" />
+                                <Label Text="{Binding betrag}" Grid.Column="1" FontSize="12" />
+                                <Button Text="Delete" Grid.Column="2" <!-- Command="{}"  CommandParameter="{Binding Source={x:Reference Item} -->/>
+                                
+                            </Grid>
+                            
+                        </ViewCell>
+                        
+                        <!-- <TextCell Text="{Binding name}" Detail="{Binding betrag}"/> -->
+                        
+                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                
-            </ListView>
 
-            <Button Text="Liste Leeren" x:Name="bt_le" Command="{Binding Commandlisteleeren}" />
-            <Button Text="Speichern lokal" x:Name="bt_sp" Command="{Binding Commandspeichern}" />
-            <Button Text="Zurück zu der Eintragsseite" x:Name="bt_ei" Command="{Binding CommandzurückHauptseite}" />
+            </ListView>
+            <Button Text="Liste Leeren" x:Name="bt_le" Command="{Binding Commandlisteleeren}" Style="{StaticResource buttonStyle}"/>
+            <Button Text="Speichern lokal" x:Name="bt_sp" Command="{Binding Commandspeichern}" Style="{StaticResource buttonStyle}"/>
+            <Button Text="Zurück zu der Eintragsseite" x:Name="bt_ei" Command="{Binding CommandzurückHauptseite}" Style="{StaticResource buttonStyle}" />
             
         </StackLayout>
     </ContentPage.Content>

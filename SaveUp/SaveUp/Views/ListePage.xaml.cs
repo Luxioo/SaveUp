@@ -34,16 +34,5 @@ namespace SaveUp
             await DisplayAlert(Titel, Text, Buttontext);
         }
 
-
-
-        private void bt_le_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ItemListelistView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
-        }
     }
 }

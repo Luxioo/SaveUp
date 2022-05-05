@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SaveUp.ViewModel"
+             x:Class="SaveUp.MainPage">
+
+
+
+
+
+
+    <StackLayout>
+        <Label x:Name="lb_willkommen" Text="Herzlich Willkommen zu SaveUp!" BackgroundColor="SteelBlue" TextColor="White" FontSize="30"/>
+        <Image Source="" />
+
+        <Button x:Name="bt_tutorial" Text="Tutorial" Command="{Binding CommandTutorial}" Style="{StaticResource buttonStyle}" />
+        <Entry Placeholder="Name des Artikels" x:Name="en_na" Text="{Binding Name}"/>
+        <Entry Placeholder="Gesparter Betrag" Keyboard="Numeric" x:Name="en_be" Text="{Binding Betrag}"/>
+
+
+        <Button Text="Speichern" x:Name="bt_sp" Command="{Binding CommandEintragspeichern}" Style="{StaticResource buttonStyle}" VerticalOptions="EndAndExpand">
+        </Button>
+        <Button Text="Zu den Einträgen" x:Name="bt_ei" Command="{Binding CommandNächsteseite}" Style="{StaticResource buttonStyle}" VerticalOptions="End"/>
+    </StackLayout>
+
+</ContentPage>

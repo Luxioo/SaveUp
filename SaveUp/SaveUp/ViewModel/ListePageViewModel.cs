@@ -20,21 +20,48 @@ namespace SaveUp.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        /// <param name="temp">Give the Itemlist</param>
         public ListePageViewModel(ObservableCollection<item> temp)
         {
-            Commandlisteleeren = new Command(Command3);
-            Commandspeichern = new Command(Command4);
-            CommandzurückHauptseite = new Command(Command5);
-            ItemListe = temp;
+            try
+            {
+                Commandlisteleeren = new Command(Command3);
+                Commandspeichern = new Command(Command4);
+                CommandzurückHauptseite = new Command(Command5);
+                ItemListe = temp;
+            }
+            catch (Exception)
+            {
+
+                simplealert("Error", "Es ist ein Fehler aufgetreten!");
+            }
+
         }
 
-
-
+        /// <summary>
+        /// Make an Simple Alert PopUp with Standard Button Weiter!
+        /// </summary>
+        /// <param name="title">Set the Title of the Alert</param>
+        /// <param name="text">Set the text displayed in the Alert</param>
+        public async void simplealert(string title, string text)
+        {
+            Application.Current.MainPage.DisplayAlert(title, text, "Weiter!");
+        }
 
         async void Command3()
         {
-            ItemListe.Clear();
+            try
+            {
+                ItemListe.Clear();
+                simplealert("Aufgabe Erfolgreich", "Liste wurde geleert!");
+            }
+            catch (Exception)
+            {
+                simplealert("Error", "Es ist ein Fehler aufgetreten!");
+            }
         }
 
         /// <summary>
@@ -42,15 +69,41 @@ namespace SaveUp.ViewModel
         /// </summary>
         async void Command4()
         {
+            try
+            {
 
+            }
+            catch (Exception)
+            {
+                simplealert("Error", "Es ist ein Fehler aufgetreten!");
+            }
         }
         /// <summary>
         /// 
         /// </summary>
         async void Command5()
         {
-            Application.Current.MainPage = new NavigationPage(new MainPage(ItemListe));
+            try
+            {
+                Application.Current.MainPage = new NavigationPage(new MainPage(ItemListe));
+            }
+            catch (Exception)
+            {
+                simplealert("Error", "Es ist ein Fehler aufgetreten!");
+            }
 
+        }
+
+        async void Command6()
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                simplealert("Error", "Es ist ein Fehler aufgetren!");
+            }
         }
 
 
@@ -69,6 +122,11 @@ namespace SaveUp.ViewModel
         /// Command to get back to the MainPage
         /// </summary>
         public Command CommandzurückHauptseite { get; }
+
+        /// <summary>
+        /// Deletes the item which is currently selected in the ListView
+        /// </summary>
+        public Command CommandAusgewähltesItemLöschen { get; set; }
 
 
 

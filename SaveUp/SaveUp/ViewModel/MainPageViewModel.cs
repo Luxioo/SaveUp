@@ -26,13 +26,19 @@ namespace SaveUp.ViewModel
         /// </summary>
         public MainPageViewModel()
         {
-            // Commands
-            CommandEintragspeichern = new Command(Command1);
-            CommandNächsteseite = new Command(Command2);
-            Commandlisteleeren = new Command(Command3);
-            Commandspeichern = new Command(Command4);
-            CommandzurückHauptseite = new Command(Command5);
-            ItemListe = new ObservableCollection<item>();
+            try
+            {
+                // Commands
+                CommandEintragspeichern = new Command(Command1);
+                CommandNächsteseite = new Command(Command2);
+                CommandTutorial = new Command(Command3);
+                ItemListe = new ObservableCollection<item>();
+            }
+            catch (Exception)
+            {
+                simplealert("Error", "Es ist ein Fehler aufgetreten!");
+            }
+
         }
         /// <summary>
         /// Ctor falls man wieder auf die Seite verweisst
@@ -40,28 +46,27 @@ namespace SaveUp.ViewModel
         /// <param name="temp"></param>
         public MainPageViewModel(ObservableCollection<item> temp)
         {
-            CommandEintragspeichern = new Command(Command1);
-            CommandNächsteseite = new Command(Command2);
-            Commandlisteleeren = new Command(Command3);
-            Commandspeichern = new Command(Command4);
-            CommandzurückHauptseite = new Command(Command5);
-            ItemListe = temp;
-        }
-
-
-        /*
-        private List<item> itemliste;
-
-        public List<item> ItemListe
-        {
-            get { return itemliste; }
-            set 
-            { 
-                itemliste = value; 
-                OnPropertyChanged();
+            try
+            {
+                CommandEintragspeichern = new Command(Command1);
+                CommandNächsteseite = new Command(Command2);
+                CommandTutorial = new Command(Command3);
+                ItemListe = temp;
             }
+            catch (Exception)
+            {
+                simplealert("!Error!", "Es ist ein Fehler aufgetreten!");
+            }
+
         }
-        */
+
+
+        public async void simplealert(string title, string text)
+        {
+            Application.Current.MainPage.DisplayAlert(title, text, "Weiter!");
+        }
+
+        
 
 
         private string name;
@@ -109,14 +114,25 @@ namespace SaveUp.ViewModel
         /// </summary>
         async void Command1()
         {
-            if (Name != "" && Convert.ToDouble(Betrag) > 0)
+            try
             {
-                ItemListe.Add(new item(Name, Convert.ToDouble(Betrag)));
+                if (Name != "" && Convert.ToDouble(Betrag) > 0)
+                {
+                    ItemListe.Add(new item(Name, Convert.ToDouble(Betrag)));
+                    simplealert("Aufgabe Erfolgreich", "Item abgegeben");
+                    Betrag = "";
+                    Name = "";
+                }
+                else
+                {
+                    simplealert("Warnung", "Du hast gar keinen Namen oder Betrag angegeben!");
+                }
             }
-            else
+            catch (Exception)
             {
+                simplealert("Error", "Es ist ein Fehler aufgetreten!");
+            }
 
-            }
         }
 
         /// <summary>
@@ -124,56 +140,33 @@ namespace SaveUp.ViewModel
         /// </summary>
         async void Command2()
         {
-
-            Application.Current.MainPage = new NavigationPage(new ListePage(ItemListe));
+            try
+            {
+                Application.Current.MainPage = new NavigationPage(new ListePage(ItemListe));
+            }
+            catch (Exception)
+            {
+                simplealert("Error", "Es ist ein Fehler aufgetreten!");
+            }
         }
-
-        // Page 2
-
-        /// <summary>
-        /// 
-        /// </summary>
 
         async void Command3()
         {
-            ItemListe.Clear();
+            try
+            {
+                simplealert("Tutorial", "Geben sie den Namen und den Preis des gesparten Objektes an. Klicken sie dannach auf Speichern. Um alle Einträge zu sehen drücken sie auf zu den Einträgen");
+            }
+            catch (Exception)
+            {
+                simplealert("Error", "Es ist ein Fehler aufgetreten!");
+            }
         }
-        
-        /// <summary>
-        ///  
-        /// </summary>
-        async void Command4()
-        {
-            
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        async void Command5()
-        {
-            Application.Current.MainPage = new NavigationPage(new MainPage(ItemListe));
 
-        }
 
         public Command CommandEintragspeichern { get; }
         public Command CommandNächsteseite { get; }
 
-
-        /// <summary>
-        /// Command to clear the list in the container
-        /// </summary>
-
-        public Command Commandlisteleeren { get; }
-
-        /// <summary>
-        /// Command to save the data it could maybe be cancelled
-        /// </summary>
-        public Command Commandspeichern { get; }
-
-        /// <summary>
-        /// Command to get back to the MainPage
-        /// </summary>
-        public Command CommandzurückHauptseite { get; }
+        public Command CommandTutorial { get; }
 
 
 
