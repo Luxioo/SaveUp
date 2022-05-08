@@ -60,21 +60,25 @@ namespace SaveUp.ViewModel
 
         }
 
-
+        /// <summary>
+        /// Makes an simple Alert Box popping off the users Screen
+        /// </summary>
+        /// <param name="title">The Title of the Alert</param>
+        /// <param name="text">The Text</param>
         public async void simplealert(string title, string text)
         {
             Application.Current.MainPage.DisplayAlert(title, text, "Weiter!");
         }
 
-        
-
 
         private string name;
-
+        /// <summary>
+        /// Name of the item
+        /// </summary>
         public string Name
         {
             get { return name; }
-            set 
+            set
             {
                 name = value;
                 OnPropertyChanged();
@@ -84,7 +88,9 @@ namespace SaveUp.ViewModel
 
 
         private string betrag;
-
+        /// <summary>
+        /// How much money the item values
+        /// </summary>
         public string Betrag
         {
             get { return betrag; }
@@ -96,7 +102,9 @@ namespace SaveUp.ViewModel
         }
 
         private string listeasstring;
-
+        /// <summary>
+        /// Needed for tests
+        /// </summary>
         public string ListeasString
         {
             get { return listeasstring; }
@@ -162,9 +170,21 @@ namespace SaveUp.ViewModel
             }
         }
 
-
+        /// <summary>
+        /// Command to save a item
+        /// </summary>
         public Command CommandEintragspeichern { get; }
+
+
+        /// <summary>
+        /// Command to change Pages
+        /// </summary>
         public Command CommandNächsteseite { get; }
+
+
+        /// <summary>
+        /// Command to display Tutorial
+        /// </summary>
 
         public Command CommandTutorial { get; }
 

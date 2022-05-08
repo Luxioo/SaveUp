@@ -20,6 +20,8 @@ namespace SaveUp.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+
         /// <summary>
         /// Ctor
         /// </summary>
@@ -31,7 +33,9 @@ namespace SaveUp.ViewModel
                 Commandlisteleeren = new Command(Command3);
                 Commandspeichern = new Command(Command4);
                 CommandzurückHauptseite = new Command(Command5);
+                CommandAusgewähltesItemLöschen = new Command(Command6);
                 ItemListe = temp;
+                calculateSumme();
             }
             catch (Exception)
             {
@@ -51,18 +55,79 @@ namespace SaveUp.ViewModel
             Application.Current.MainPage.DisplayAlert(title, text, "Weiter!");
         }
 
+
+
+        private item selectedItem;
+
+        /// <summary>
+        /// Das ausgewählte Item
+        /// </summary>
+        public item SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                selectedItem = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private double summe;
+
+        /// <summary>
+        /// Das ausgewählte Item
+        /// </summary>
+        public double Summe
+        {
+            get { return summe; }
+            set
+            {
+                summe = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        /// <summary>
+        /// Calculate Sum for showing how much is saved
+        /// </summary>
+
+        void calculateSumme()
+        {
+            {
+                try
+                {
+                    Summe = 0;
+                    foreach (item obj in ItemListe)
+                    {
+                        Summe += obj.betrag;
+                    }
+                }
+                catch (Exception)
+                {
+                    simplealert("Error", "Es ist ein Fehler aufgetreten!");
+                }
+            }
+
+        }
+
+
         async void Command3()
         {
             try
             {
                 ItemListe.Clear();
                 simplealert("Aufgabe Erfolgreich", "Liste wurde geleert!");
+                calculateSumme();
             }
             catch (Exception)
             {
                 simplealert("Error", "Es ist ein Fehler aufgetreten!");
             }
         }
+
+
 
         /// <summary>
         ///  
@@ -71,7 +136,7 @@ namespace SaveUp.ViewModel
         {
             try
             {
-
+                simplealert("Info", "Wird zukünftlich hinzugefügt gedulden sie sich noch ein bisschen.");
             }
             catch (Exception)
             {
@@ -96,9 +161,11 @@ namespace SaveUp.ViewModel
 
         async void Command6()
         {
+
             try
             {
-
+                ItemListe.Remove(SelectedItem);
+                calculateSumme();
             }
             catch (Exception)
             {

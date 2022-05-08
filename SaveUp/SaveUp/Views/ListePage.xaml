@@ -9,7 +9,7 @@
             <Editor IsReadOnly="True" x:Name="ed_te" Text="{Binding ListeasString}" />
             <ListView x:Name="ItemListelistView"
                       ItemsSource="{Binding ItemListe}"
-                      >
+                      SelectedItem="{Binding SelectedItem}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -18,25 +18,23 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding name}" />
                                 <Label Text="{Binding betrag}" Grid.Column="1" FontSize="12" />
                                 <Label Text="{Binding uhrzeit}" Grid.Column="2"/>
-                                <Button Text="Delete" Grid.Column="3" Style="{StaticResource buttonStyle}"/>
-                                <!-- Command="{}"  CommandParameter="{Binding Source={x:Reference Item} --> 
                                 
                             </Grid>
                             
                         </ViewCell>
-                        
-                        <!-- <TextCell Text="{Binding name}" Detail="{Binding betrag}"/> -->
-                        
+                                                
                         
                     </DataTemplate>
                 </ListView.ItemTemplate>
 
             </ListView>
+            <Label Text="Gesparter Betrag:" />
+            <Label Text="{Binding Summe}"></Label>
+            <Button Text="Ausgewähltes Item löschen" x:Name="bt_al" Command="{Binding CommandAusgewähltesItemLöschen}" Style="{StaticResource buttonStyle}"/>
             <Button Text="Liste Leeren" x:Name="bt_le" Command="{Binding Commandlisteleeren}" Style="{StaticResource buttonStyle}"/>
             <Button Text="Speichern lokal" x:Name="bt_sp" Command="{Binding Commandspeichern}" Style="{StaticResource buttonStyle}"/>
             <Button Text="Zurück zu der Eintragsseite" x:Name="bt_ei" Command="{Binding CommandzurückHauptseite}" Style="{StaticResource buttonStyle}" />
