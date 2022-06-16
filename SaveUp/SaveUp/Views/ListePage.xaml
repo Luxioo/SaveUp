@@ -20,7 +20,7 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding name}" />
-                                <Label Text="{Binding betrag}" Grid.Column="1" FontSize="12" />
+                                <Label Text="{Binding betrag, StringFormat='{0:C}'}" Grid.Column="1" FontSize="12" />
                                 <Label Text="{Binding uhrzeit}" Grid.Column="2"/>
                                 
                             </Grid>
@@ -33,7 +33,7 @@
 
             </ListView>
             <Label Text="Gesparter Betrag:" />
-            <Label Text="{Binding Summe}"></Label>
+            <Label Text="{Binding Summe, StringFormat='{0:C}'}"></Label>
             <Button Text="Ausgewähltes Item löschen" x:Name="bt_al" Command="{Binding CommandAusgewähltesItemLöschen}" Style="{StaticResource buttonStyle}"/>
             <Button Text="Liste Leeren" x:Name="bt_le" Command="{Binding Commandlisteleeren}" Style="{StaticResource buttonStyle}"/>
             <Button Text="Speichern lokal" x:Name="bt_sp" Command="{Binding Commandspeichern}" Style="{StaticResource buttonStyle}"/>

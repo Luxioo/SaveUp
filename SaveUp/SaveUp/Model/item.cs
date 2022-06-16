@@ -39,13 +39,19 @@ namespace SaveUp
             set { y = value; }
         }
 
-
+        /// <summary>
+        /// ctor
+        /// </summary>
         public item()
         {
 
         }
 
-
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        /// <param name="namedesproduktes"></param>
+        /// <param name="gesparterbetrag"></param>
         public item(string namedesproduktes, double gesparterbetrag)
         {
             name = namedesproduktes;
