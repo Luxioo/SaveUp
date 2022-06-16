@@ -21,7 +21,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding name}" />
                                 <Label Text="{Binding betrag, StringFormat='{0:C}'}" Grid.Column="1" FontSize="12" />
-                                <Label Text="{Binding uhrzeit}" Grid.Column="2"/>
+                                <Label Text="{Binding uhrzeit, StringFormat='{0:dd.MM.yyyy}'}" Grid.Column="2"/>
                                 
                             </Grid>
                             
