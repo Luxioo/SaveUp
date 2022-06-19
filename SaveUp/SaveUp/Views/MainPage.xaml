@@ -10,7 +10,7 @@
 
 
     <StackLayout>
-        <Label x:Name="lb_willkommen" Text="Herzlich Willkommen zu SaveUp!" BackgroundColor="SteelBlue" TextColor="White" FontSize="30"/>
+        <Label x:Name="lb_willkommen" Text="Herzlich Willkommen zu SaveUp!" BackgroundColor="DarkOrange" TextColor="White" FontSize="30"/>
         <Image Source="" />
         
         <Button x:Name="bt_tutorial" Text="Tutorial" Command="{Binding CommandTutorial}" Style="{StaticResource buttonStyle}" />
